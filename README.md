@@ -97,7 +97,11 @@ apt install -y docker-ce docker-ce-cli containerd.io
 mkdir /opt/greenlight && cd /opt/greenlight
 # ... see docs
 # execute docker commands
+
 # make sure to not use docker-compose from the Ubuntu repository
+# install current docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 # Make sure to add at the bottom of /opt/greenlight/.env
 DEFAULT_REGISTRATION=invite
