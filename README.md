@@ -104,7 +104,7 @@ curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compo
 chmod +x /usr/local/bin/docker-compose
 
 # Make sure to add at the bottom of /opt/greenlight/.env
-DEFAULT_REGISTRATION=invite
+DEFAULT_REGISTRATION=approval
 
 # create admin user
 # make sure to immediately log-in and change the password
