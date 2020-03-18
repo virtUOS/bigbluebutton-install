@@ -103,6 +103,11 @@ mkdir /opt/greenlight && cd /opt/greenlight
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
+# make sure Greenlight starts automatically
+sed -i 's/restart: .*$/restart: always/g' /opt/greenlight/docker-compose.yml
+
+# ...
+
 # Make sure to add at the bottom of /opt/greenlight/.env
 DEFAULT_REGISTRATION=approval
 
