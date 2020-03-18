@@ -98,4 +98,11 @@ mkdir /opt/greenlight && cd /opt/greenlight
 # ... see docs
 # execute docker commands
 # make sure to not use docker-compose from the Ubuntu repository
+
+# Make sure to add at the bottom of /opt/greenlight/.env
+DEFAULT_REGISTRATION=invite
+
+# create admin user
+# make sure to immediately log-in and change the password
+docker exec greenlight-v2 bundle exec rake admin:create
 ```
