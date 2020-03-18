@@ -115,3 +115,27 @@ DEFAULT_REGISTRATION=approval
 # make sure to immediately log-in and change the password
 docker exec greenlight-v2 bundle exec rake admin:create
 ```
+
+Configure Clones Server
+-----------------------
+
+This isn't necessary unless you clone a complete server in which case you would need to switch to another domain name.
+
+```bash
+# switch from webconf01 to webconf04
+bbb-conf --setip webconf04.example.com
+sed -i 's/webconf01.e/webconf04.e/g' /etc/nginx/sites-available/bigbluebutton
+systemctl reload nginx.service
+apt install pwgen
+bbb-conf --setsecret "$(pwgen -n1 40)"
+sed -i 's/webconf01/webconf04/g' /opt/greenlight/.env
+sed -i "s/^BIGBLUEBUTTON_SECRET=.*$/BIGBLUEBUTTON_SECRET=$(sudo bbb-conf --secret | grep Secret: | awk '{print $2;}')/" /opt/greenlight/.env
+cd /opt/greenlight
+docker-compose down
+docker-compose up -d
+sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /opt/freeswitch/etc/freeswitch/vars.xml
+sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
+sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /etc/bigbluebutton/nginx/sip.nginx
+sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml
+bbb-conf --restart
+```
