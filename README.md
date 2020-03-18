@@ -55,6 +55,9 @@ bbb-conf --status
 # TLS stuff here
 # https://docs.bigbluebutton.org/2.2/install.html#configure-ssl-on-your-bigbluebutton-server
 
+# configure domain name
+bbb-conf --setip bigbluebutton.example.com
+
 mkdir /etc/nginx/ssl
 # deploy certificates
 openssl dhparam -out /etc/nginx/ssl/dhp-4096.pem 4096
