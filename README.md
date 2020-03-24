@@ -139,3 +139,20 @@ sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /etc/bigbluebutton/
 sed -i "s/131.173.22.186/$(hostname -i | awk '{print $2}')/" /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml
 bbb-conf --restart
 ```
+
+Configure sipgate
+-----------------
+
+To configure sipgate and make it possible to connect to a BBB video conference via telephone you have to
+add the [my_provider.xml](https://github.com/virtUOS/bigbluebutton-install/blob/master/sipgate_configs/my_provider.xml)
+to the folder
+
+```bash
+/opt/freeswitch/etc/freeswitch/dialplan/public/my_provider.xml
+```
+
+and the [sipgate.xml](/opt/freeswitch/etc/freeswitch/dialplan/public/my_provider.xml) to the folder
+
+```bash
+/opt/freeswitch/etc/freeswitch/sip_profiles/external/sipgate.xml
+```
