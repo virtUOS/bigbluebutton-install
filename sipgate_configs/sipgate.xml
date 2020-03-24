@@ -1,0 +1,8 @@
+<include>
+	<gateway name="sipgate.de">
+		<param name="proxy" value="sipgate.de"/>
+		<param name="username" value="<username>"/>
+		<param name="password" value="<password>"/>
+		<param name="extension" value="044155979504"/>
+	</gateway>
+</include>
