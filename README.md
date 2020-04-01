@@ -151,7 +151,7 @@ to the folder
 /opt/freeswitch/etc/freeswitch/dialplan/public/my_provider.xml
 ```
 
-and the [sipgate.xml](/opt/freeswitch/etc/freeswitch/dialplan/public/my_provider.xml) to the folder
+and the [sipgate.xml](https://github.com/virtUOS/bigbluebutton-install/blob/master/sipgate_configs/sipgate.xml) to the folder
 
 ```bash
 /opt/freeswitch/etc/freeswitch/sip_profiles/external/sipgate.xml
